@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public class Trip {
 
-    private long id;
+    private Long id;
     private String title;
     private double budget;
     private boolean active;
@@ -22,7 +22,7 @@ public class Trip {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Trip trip = (Trip) o;
-        return id == trip.id && Double.compare(budget, trip.budget) == 0 && active == trip.active && Objects.equals(title, trip.title) && Objects.equals(places, trip.places);
+        return Double.compare(budget, trip.budget) == 0 && active == trip.active && Objects.equals(id, trip.id) && Objects.equals(title, trip.title) && Objects.equals(places, trip.places);
     }
 
     @Override

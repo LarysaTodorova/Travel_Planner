@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Traveler {
 
-    private long id;
+    private Long id;
     private String name;
     private boolean active;
     private List<Trip> trips = new ArrayList<>();
@@ -19,7 +19,7 @@ public class Traveler {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Traveler traveler = (Traveler) o;
-        return id == traveler.id && active == traveler.active && Objects.equals(name, traveler.name) && Objects.equals(trips, traveler.trips);
+        return active == traveler.active && Objects.equals(id, traveler.id) && Objects.equals(name, traveler.name) && Objects.equals(trips, traveler.trips);
     }
 
     @Override

@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Place {
 
-    private long id;
+    private Long id;
     private String city;
     private String name;
     private PlaceType placeType;
@@ -18,11 +18,47 @@ public class Place {
         this.estimatedCost = estimatedCost;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public PlaceType getPlaceType() {
+        return placeType;
+    }
+
+    public double getEstimatedCost() {
+        return estimatedCost;
+    }
+
+    public void setEstimatedCost(double estimatedCost) {
+        this.estimatedCost = estimatedCost;
+    }
+
+    public boolean isVisited() {
+        return visited;
+    }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Place place = (Place) o;
-        return id == place.id && Double.compare(estimatedCost, place.estimatedCost) == 0 && visited == place.visited && Objects.equals(city, place.city) && Objects.equals(name, place.name) && placeType == place.placeType;
+        return Double.compare(estimatedCost, place.estimatedCost) == 0 && visited == place.visited && Objects.equals(id, place.id) && Objects.equals(city, place.city) && Objects.equals(name, place.name) && placeType == place.placeType;
     }
 
     @Override
