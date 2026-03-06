@@ -21,9 +21,9 @@ public class TripRepository {
         return database;
     }
 
-    public Trip findById(long id) {
+    public Trip findById(Long id) {
         for (Trip trip : database) {
-            if (trip.getId() == id) {
+            if (id.equals(trip.getId())) {
                 return trip;
             }
         }

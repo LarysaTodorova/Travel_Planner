@@ -34,8 +34,24 @@ public class Trip {
         this.title = title;
     }
 
+    public double getBudget() {
+        return budget;
+    }
+
     public void setBudget(double budget) {
         this.budget = budget;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public List<Place> getPlaces() {
+        return places;
     }
 
     @Override
@@ -52,6 +68,7 @@ public class Trip {
 
     @Override
     public String toString() {
-        return String.format("Trip: id -%d, title - %s, budget - %.2f, active - %b", id, title, budget, active);
+        return String.format("Trip: id -%d, title - %s, budget - %.2f, active - %b, place - %s",
+                id, title, budget, active, places);
     }
 }

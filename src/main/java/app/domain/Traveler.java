@@ -45,6 +45,6 @@ public class Traveler {
 
     @Override
     public String toString() {
-        return String.format("Traveler: id -%d, name - %s, active - %b", id, name, active);
+        return String.format("Traveler: id -%d, name - %s, active - %b, trip - %s", id, name, active, trips);
     }
 }
