@@ -32,7 +32,7 @@ public class PlaceRepository {
 
     public Place findByName(String name) {
         for (Place place : database) {
-            if (place.getName().equals(name)) {
+            if (place.getName().equalsIgnoreCase(name)) {
                 return place;
             }
         }
@@ -47,9 +47,9 @@ public class PlaceRepository {
     }
 
     public void delete(Long id) {
-        Place placeToDelete = findById(id);
-        if (placeToDelete != null) {
-            database.remove(placeToDelete);
+        Place placeForDelete = findById(id);
+        if (placeForDelete != null) {
+            database.remove(placeForDelete);
         }
     }
 
