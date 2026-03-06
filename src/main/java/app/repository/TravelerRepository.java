@@ -27,6 +27,16 @@ public class TravelerRepository {
         return database.get(id);
     }
 
+    public List<Traveler> findByName(String name) {
+        List<Traveler> travelers = new ArrayList<>();
+        for (Traveler traveler : database.values()) {
+            if (traveler.getName().equalsIgnoreCase(name)) {
+                travelers.add(traveler);
+            }
+        }
+        return travelers;
+    }
+
     public void update(Long id, String name) {
         Traveler travelerForUpdate = database.get(id);
         if (travelerForUpdate != null) {
