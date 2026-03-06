@@ -17,7 +17,7 @@ public class Client {
         System.out.println("Place has been saved successfully: " + place);
 
         Trip trip = new Trip("Walking", 26.7);
-        TripService tripService = new TripService();
+        TripService tripService = TripService.getInstance();
         tripService.save(trip);
         tripService.addPlaceToTrip(1L, 1L);
         System.out.println("New trip: " + trip);

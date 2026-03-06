@@ -9,8 +9,20 @@ import java.util.List;
 
 public class TripService {
 
+    private static TripService instance;
     private final TripRepository tripRepository = new TripRepository();
     private final PlaceService placeService = PlaceService.getInstance();
+
+    private TripService() {
+
+    }
+
+    public static TripService getInstance() {
+        if (instance == null) {
+            instance = new TripService();
+        }
+        return instance;
+    }
 
     public Trip save(Trip trip) {
         if (trip == null) {
