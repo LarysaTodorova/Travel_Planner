@@ -94,7 +94,7 @@ public class PlaceService {
 
     public void remove(Long id) {
         findById(id);
-        placeRepository.delete(id);
+        placeRepository.remove(id);
     }
 
 }

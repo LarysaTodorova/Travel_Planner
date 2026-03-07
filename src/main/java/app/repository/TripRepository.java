@@ -53,7 +53,7 @@ public class TripRepository {
         }
     }
 
-    public void delete(Long id) {
+    public void remove(Long id) {
         Trip tripForDelete = findById(id);
         if (tripForDelete != null) {
             database.remove(tripForDelete);
