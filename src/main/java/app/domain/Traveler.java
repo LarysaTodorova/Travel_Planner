@@ -31,6 +31,18 @@ public class Traveler {
         this.name = name;
     }
 
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public List<Trip> getTrips() {
+        return trips;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -45,6 +57,6 @@ public class Traveler {
 
     @Override
     public String toString() {
-        return String.format("Traveler: id -%d, name - %s, active - %b", id, name, active);
+        return String.format("Traveler: id -%d, name - %s, active - %b, trip - %s", id, name, active, trips);
     }
 }

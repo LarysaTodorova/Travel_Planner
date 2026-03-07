@@ -23,18 +23,28 @@ public class TravelerRepository {
         return new ArrayList<>(database.values());
     }
 
-    public Traveler findById(long id) {
+    public Traveler findById(Long id) {
         return database.get(id);
     }
 
-    public void update(long id, String name) {
+    public List<Traveler> findByName(String name) {
+        List<Traveler> travelers = new ArrayList<>();
+        for (Traveler traveler : database.values()) {
+            if (traveler.getName().equalsIgnoreCase(name)) {
+                travelers.add(traveler);
+            }
+        }
+        return travelers;
+    }
+
+    public void update(Long id, String name) {
         Traveler travelerForUpdate = database.get(id);
         if (travelerForUpdate != null) {
             travelerForUpdate.setName(name);
         }
     }
 
-    public void delete(long id) {
+    public void delete(Long id) {
         database.remove(id);
     }
 }
