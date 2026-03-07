@@ -25,7 +25,7 @@ public class Client {
         System.out.println("New trip: " + trip);
 
         Traveler traveler = new Traveler("Alexa");
-        TravelerService travelerService = new TravelerService();
+        TravelerService travelerService = TravelerService.getInstance();
         travelerService.save(traveler);
         travelerService.addTripToTraveler(1L, 1L);
         System.out.println(traveler);
