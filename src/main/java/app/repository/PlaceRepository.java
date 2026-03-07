@@ -46,7 +46,7 @@ public class PlaceRepository {
         }
     }
 
-    public void delete(Long id) {
+    public void remove(Long id) {
         Place placeForDelete = findById(id);
         if (placeForDelete != null) {
             database.remove(placeForDelete);

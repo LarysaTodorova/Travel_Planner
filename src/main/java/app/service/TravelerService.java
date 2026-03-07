@@ -10,9 +10,20 @@ import java.util.List;
 
 public class TravelerService {
 
+    private static TravelerService instance;
     private final TravelerRepository travelerRepository = new TravelerRepository();
     private final TripService tripService = TripService.getInstance();
     private final PlaceService placeService = PlaceService.getInstance();
+
+    public TravelerService() {
+    }
+
+    public static TravelerService getInstance() {
+        if (instance == null) {
+            instance = new TravelerService();
+        }
+        return instance;
+    }
 
     public Traveler save(Traveler traveler) {
         if (traveler == null) {

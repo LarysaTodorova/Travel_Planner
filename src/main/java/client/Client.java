@@ -1,10 +1,12 @@
 package client;
 
+import app.controller.PlaceController;
 import app.domain.Place;
 import app.domain.PlaceType;
 import app.domain.Traveler;
 import app.domain.Trip;
 import app.service.PlaceService;
+import app.service.TravelerService;
 import app.service.TripService;
 
 
@@ -23,6 +25,9 @@ public class Client {
         System.out.println("New trip: " + trip);
 
         Traveler traveler = new Traveler("Alexa");
+        TravelerService travelerService = TravelerService.getInstance();
+        travelerService.save(traveler);
+        travelerService.addTripToTraveler(1L, 1L);
         System.out.println(traveler);
     }
 }

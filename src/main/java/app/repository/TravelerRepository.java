@@ -44,7 +44,7 @@ public class TravelerRepository {
         }
     }
 
-    public void delete(Long id) {
+    public void remove(Long id) {
         database.remove(id);
     }
 }
