@@ -57,6 +57,14 @@ public class TripService {
         return trip;
     }
 
+    public Trip findActiveTripById(Long id) {
+        List<Trip> trips = findAllActiveTrips();
+        return trips.stream()
+                .filter(trip -> trip.getId().equals(id))
+                .findFirst()
+                .orElseThrow(() -> new TripNotFoundException(id));
+    }
+
     public Trip findByTitle(String title) {
         Trip trip = tripRepository.findByTitle(title);
 
@@ -85,12 +93,12 @@ public class TripService {
         tripRepository.updateBudget(id, newBudget);
     }
 
-    public void deleteById(Long id) {
+    public void removeById(Long id) {
         Trip trip = findById(id);
         trip.setActive(false);
     }
 
-    public void deleteByTitle(String title) {
+    public void removeByTitle(String title) {
         findByTitle(title);
         findAllActiveTrips()
                 .stream()
@@ -98,17 +106,28 @@ public class TripService {
                 .forEach(t -> t.setActive(false));
     }
 
-    public void restoreById(Long id) {
+    public void restoreTripById(Long id) {
         Trip trip = findById(id);
         trip.setActive(true);
     }
 
     public void addPlaceToTrip(Long tripId, Long placeId) {
         Place place = placeService.findById(placeId);
-        Trip trip = findById(tripId);
+        Trip trip = findActiveTripById(tripId);
         if (trip.getPlaces().contains(place)) {
             throw new TripUpdateException("Place already exists in this trip");
         }
         trip.getPlaces().add(place);
+    }
+
+    public void removePlaceFromTrip(Long tripId, Long placeId) {
+        Place place = placeService.findById(placeId);
+        Trip trip = findActiveTripById(tripId);
+
+        if (!trip.getPlaces().contains(place)) {
+            throw new PlaceNotFoundException(placeId);
+        }
+
+        trip.getPlaces().remove(place);
     }
 }

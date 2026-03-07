@@ -92,7 +92,7 @@ public class PlaceService {
         placeRepository.update(id, cost);
     }
 
-    public void delete(Long id) {
+    public void remove(Long id) {
         findById(id);
         placeRepository.delete(id);
     }
